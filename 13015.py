@@ -20,10 +20,19 @@ def star(n):
     flag = 0
     first_blank = []
     last_blank = []
+    rows = []
     for i in range(2*n-1):
+        
+        if n==2 and i== 1:
+            rows.append(' ***')
+            tmp = ''.join(blank)
+            # print(f'{x}{tmp}{x}')
+            rows.append(f'{x}{tmp}{x}')
+            break
         if i==0 or i==2*n-2:
             tmp = ''.join(blank)
-            print(f'{x}{tmp}{x}')
+            # print(f'{x}{tmp}{x}')
+            rows.append(f'{x}{tmp}{x}')
         else:
             row = ''
             if flag == 0:
@@ -36,14 +45,19 @@ def star(n):
                     first_blank.append(blank.pop())
                     last_blank.append(blank.pop())
                     row += ''.join(first_blank) + y + ''.join(blank) + y # + ''.join(last_blank)
-                print(row)
+                rows.append(row)
+                # print(row)
             else:
                 first_blank.pop()
                 last_blank.pop()
                 row += ''.join(first_blank) + y + ''.join(blank) + y # + ''.join(last_blank)
                 blank.append(' ')
                 blank.append(' ')
-                print(row)
+                rows.append(row)
+                # print(row)
+
+    return rows
 
 if __name__ == '__main__':
-    star(int(input()))
+    rows = star(int(input()))
+    print('\n'.join(rows))
