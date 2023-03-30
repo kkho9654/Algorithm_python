@@ -10,7 +10,8 @@ def shuffle(card_num, shuffle_num,p,d):
     for i in range(card_num):
         tmp = p[i+1]
         p[d[i+1]] = tmp
-
+# p[d[i]] = s
+# d_ = d[d[i]]
     return shuffle(card_num,shuffle_num,p,d)
 
 if __name__ == '__main__':
