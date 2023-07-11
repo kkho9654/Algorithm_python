@@ -1,0 +1,38 @@
+import sys, time
+
+n = int(sys.stdin.readline())
+lis = list(map(int, sys.stdin.readline().split(' ')))
+
+m = int(sys.stdin.readline())
+mlis = list(map(int, sys.stdin.readline().split(' ')))
+
+def binaryLowerBound(arr, val):
+    left, right = 0, len(arr)
+    while left < right:
+        mid = left + (right - left) // 2
+        if arr[mid] >= val: # 타겟보다 좌표값이 크거나 같으면
+            right = mid # 우측 조정
+        elif arr[mid] < val: # 타겟보다 좌표값이 작으면
+            left = mid + 1 # 좌측 조정
+    return left # 하계는 타겟보다 같거나 큰 좌표이므로
+ 
+def binaryUpperBound(arr, val):
+    left, right = 0, len(arr)
+    while left < right:
+        mid = left + (right - left) // 2
+        if arr[mid] <= val: # 타겟보다 좌표값이 작거나 같으면 
+            left = mid + 1 # 좌측 조정
+        elif arr[mid] > val: # 타겟보다 좌표값이 크면
+            right = mid # 우측 조정
+    return left # 상계는 타겟보다 큰 최소 좌표이므로
+
+lis.sort()
+countarr = []
+for mv in mlis:
+    try:
+        count = binaryUpperBound(lis, mv) - binaryLowerBound(lis, mv)
+    except:
+        count = 0
+    countarr.append(count)
+
+print(*countarr)
