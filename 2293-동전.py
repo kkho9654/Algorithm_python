@@ -7,7 +7,6 @@ for _ in range(n):
 
 dp = [0 for _ in range(k)]
 
-
 for c in (sorted(coin)): 
     for i in range(k):
         if i == c-1:
