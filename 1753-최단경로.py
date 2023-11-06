@@ -14,9 +14,6 @@ dp[K] = 0
 heapq.heappush(hq, (0,K))
 while hq:
     weight , current = heapq.heappop(hq)
-    # 가중치 업데이트
-    # if dp[current] < weight:
-    #     continue
 
     # 현재노드와 연결된 모든 노드의 가중치를 업데이트한다
     for next_node, new_weight in graph[current]:
