@@ -26,3 +26,4 @@ for _ in range(N):
         max_dp[i] = max_tmp[i]
 
 print(max(max_dp), min(min_dp))
+
